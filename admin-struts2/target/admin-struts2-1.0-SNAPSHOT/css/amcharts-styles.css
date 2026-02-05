@@ -1,0 +1,7 @@
+.chartdiv {
+  width: 25% !important;
+  height: 25rem;
+}
+.amcharts-chart-div>a {
+    display: none!important;
+}

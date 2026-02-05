@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="user" namespace="/User" extends="struts-default">
+        <action name="Login" class="com.konkiburger.user.action.LoginAction">
+            <result name="success" type="redirectAction">Inicio</result>
+            <result name="error" type="dispatcher">pages/login.jsp</result>
+        </action>
+        <action name="Inicio" class="com.konkiburger.user.action.InicioAction">
+            <result name="success">pages/inicio.jsp</result>
+            <!-- Redireccionamos en caso de error a que se quede en la misma página -->
+            <result name="error" type="redirectAction">Login</result>
+        </action>
+        <action name="Productos" class="com.konkiburger.user.action.ProductoAction">
+            <result name="success">pages/productos.jsp</result>
+            <result name="error" type="redirectAction">Login</result>
+        </action>
+        <action name="Categorias" class="com.konkiburger.user.action.CategoriaAction">
+            <result name="success">pages/categorias.jsp</result>
+            <result name="error" type="redirectAction">Login</result>
+        </action>
+        <action name="Pedidos" class="com.konkiburger.user.action.PedidoAction">
+            <result name="success">pages/pedidos.jsp</result>
+            <result name="error" type="redirectAction">Login</result>
+        </action>
+        <action name="detallePedido" class="com.konkiburger.user.action.PedidoDetalleAction">
+            <result name="success">pages/detallePedido.jsp</result>
+            <result name="error" type="redirectAction">Login</result>
+        </action>
+<!--        <action name="Inventario" class="com.konkiburger.user.action.InventarioAction">-->
+<!--            <result name="success">pages/inventario.jsp</result>-->
+<!--            <result name="error" type="redirectAction">Login</result>-->
+<!--        </action>-->
+<!--        <action name="Configuracion" class="com.konkiburger.user.action.ConfiguracionAction">-->
+<!--            <result name="success">pages/configuracion.jsp</result>-->
+<!--            <result name="error" type="redirectAction">Login</result>-->
+<!--        </action>-->
+<!--        <action name="Estadisticas" class="com.konkiburger.user.action.EstadisticasAction">-->
+<!--            <result name="success">pages/estadisticas.jsp</result>-->
+<!--            <result name="error" type="redirectAction">Login</result>-->
+<!--        </action>-->
+    </package>
+
+</struts>

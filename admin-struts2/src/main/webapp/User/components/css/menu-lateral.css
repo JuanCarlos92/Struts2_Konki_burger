@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.contenedor-enlace {
+    cursor: pointer;
+}
+
+.contenedor-enlace:hover {
+    background-color: #083e8f;
+}
+a{
+    text-decoration: none !important;
+}
+.enfocado{
+    background-color: #083e8f;
+    font-weight: bold;
+}

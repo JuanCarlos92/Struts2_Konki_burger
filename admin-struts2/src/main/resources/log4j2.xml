@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Con status definimos el nivel de registro -->
+<Configuration status="INFO">
+    <!-- Definimos las salidas de los loggers -->
+    <Appenders>
+        <!-- Definimos salida por consola -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%-5p} %d{MM-dd-yyyy HH:mm:ss} %c %m %n"/>
+        </Console>
+        <!-- Definimos salida por fichero -->
+        <RollingRandomAccessFile name="RollingRandomAccessFileAppender" fileName="logs/log-%d{dd-MM-yyyy}.log" filePattern="logs/$${date:dd-MM-yyyy}/log-%d{MM-dd-yyyy}-%i.gz">
+            <PatternLayout>
+                <Pattern>%highlight{%-5p} %d{MM-dd-yyyy HH:mm:ss} %c %M %m %n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <!-- Cuando pesará caga archivo, cuando llegue a los 5MB crea otro -->
+                <SizeBasedTriggeringPolicy size="5 MB" />
+            </Policies>
+            <!-- Cuando tenga 10 archivos, los comprimirá en el nombre definido en el filePattern y seguirá creando de nuevo -->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <!-- Definimos los loggers, antes los creamos, ahora los asignamos -->
+    <Loggers>
+        <!-- additivity false evita logs repetidos -->
+        <!-- Loggers específicos -->
+        <Logger name="com.konkiburger.user" level="info" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="RollingRandomAccessFileAppender"/>
+        </Logger>
+        <!-- Root captura todos los logs que no hayan sido capturados en Loggers específicos -->
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="RollingRandomAccessFileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
